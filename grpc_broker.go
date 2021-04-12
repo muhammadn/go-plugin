@@ -372,7 +372,7 @@ func (b *GRPCBroker) Dial(id uint32) (conn *grpc.ClientConn, err error) {
 	select {
 	case c = <-p.ch:
 		close(p.doneCh)
-	case <-time.After(5 * time.Second):
+	case <-time.After(60 * time.Second):
 		return nil, fmt.Errorf("timeout waiting for connection info")
 	}
 
